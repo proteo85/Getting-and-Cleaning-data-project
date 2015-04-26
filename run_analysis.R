@@ -1,26 +1,27 @@
-## I want to create a data set by joining train and test data sets using rbind command. Each row is an abservation for which the first and second column are the subject and the activity respectively, and the rest of columns corresponds to the different measurable stuff 
-
-### Load the dplyr package
+## Load the dplyr package
 library(dplyr)
+
+## set the working directory
+setwd("R/project_cleaning_data/")
 
 ## Firstly, we read all the needed data files
 
 ## test data files
-test<-read.table("R/project_cleaning_data/UCI HAR Dataset/test/X_test.txt")
-test_sub<-read.table("R/project_cleaning_data/UCI HAR Dataset/test/subject_test.txt")
-test_act<-read.table("R/project_cleaning_data/UCI HAR Dataset/test/y_test.txt")
+test<-read.table("UCI HAR Dataset/test/X_test.txt")
+test_sub<-read.table("UCI HAR Dataset/test/subject_test.txt")
+test_act<-read.table("UCI HAR Dataset/test/y_test.txt")
 
 ## train data files
 
-train<-read.table("R/project_cleaning_data/UCI HAR Dataset/train/X_train.txt")
-train_sub<-read.table("R/project_cleaning_data/UCI HAR Dataset/train/subject_train.txt")
-train_act<-read.table("R/project_cleaning_data/UCI HAR Dataset/train/y_train.txt")
+train<-read.table("UCI HAR Dataset/train/X_train.txt")
+train_sub<-read.table("UCI HAR Dataset/train/subject_train.txt")
+train_act<-read.table("UCI HAR Dataset/train/y_train.txt")
 
 ## features
-hnames<-read.table("R/project_cleaning_data/UCI HAR Dataset/features.txt",stringsAsFactors=FALSE)
+hnames<-read.table("UCI HAR Dataset/features.txt",stringsAsFactors=FALSE)
 
 ## And finally activities
-act<-read.table("R/project_cleaning_data/UCI HAR Dataset/activity_labels.txt",colClasses="character",stringsAsFactors=FALSE)
+act<-read.table("UCI HAR Dataset/activity_labels.txt",colClasses="character",stringsAsFactors=FALSE)
 
 
 ##Change the activity numbers by each proper name (step 3)
@@ -80,4 +81,4 @@ rm(test_sub,test_act,test,train_sub,train_act,train,final_names,sub_in,data_test
 
 dat_5step<-summarise_each(group_by(dat_final,subject,activity),funs(mean))	
 
-write.table(dat_5step,file="R/project_cleaning_data/data_project.txt",row.names=FALSE,quote=FALSE)
+write.table(dat_5step,file="data_project.txt",row.names=FALSE,quote=FALSE)

@@ -19,8 +19,8 @@ In order to get to that final tidy data (step 5 above) all the previous 4 steps 
 
 Regarding the choice of measurements(features), step 2 only states extracting measurements on the mean and standard deviation, so in the script the command grep has been used to extract any measurement implying a mean or standard deviation measurement. 79 features are then those which imply a mean or standard deviation feature.
 
-Finally, the code itself is commented before almost every single line to explain what that particular line does.
-
+Finally, the code itself is commented before almost any command line to explain 
 ### The code book
 
 The code book, both in pdf and md format, gives an explanation of the meaning of each variable in the tidy data set. 
+
