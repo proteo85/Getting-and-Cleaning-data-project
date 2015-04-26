@@ -1,6 +1,5 @@
 ## I want to create a data set by joining train and test data sets using rbind command. Each row is an abservation for which the first and second column are the subject and the activity respectively, and the rest of columns corresponds to the different measurable stuff 
 
-
 ### Load the dplyr package
 library(dplyr)
 
@@ -46,7 +45,7 @@ hnames<-hnames[,2]
 colnames(test)<-hnames
 colnames(train)<-hnames
 
-## Create a vector of indexs corresponding to the variables which contain mean and standard desviation
+## Create a vector of indexes corresponding to the variables which contain mean and standard desviation
 sub_in<-union(grep("mean",hnames),grep("std",hnames))
 
 ## order it
@@ -73,6 +72,9 @@ data_train<-cbind(train_sub,train_act,train)
 ## Finally, join them using rbind
 
 dat_final<-rbind(data_test,data_train)
+
+## Remove all the created variables no needed
+rm(test_sub,test_act,test,train_sub,train_act,train,final_names,sub_in,data_test,data_train,hnames,act)
 
 # The data to be write in an output file will correspond to a tidy data group by subject and activity. Each feature will then be averaged for each pair.
 
